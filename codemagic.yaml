@@ -122,14 +122,14 @@ workflows:
           puts "Using target: #{target.name}"
 
           # --- Add Swift file to project & build phase
-          swift_path = File.join(target_src_dir, 'WebViewManager.swift')
+          swift_rel_path = 'WebViewManager.swift'
 
           # file reference (relative path inside project)
           # Добавляем в main group (без фанатизма)
           main_group = project.main_group
 
-          existing_ref = project.files.find { |f| f.path == swift_path || f.path == 'WebViewManager.swift' }
-          file_ref = existing_ref || main_group.new_file(swift_path)
+          existing_ref = project.files.find { |f| f.path == swift_rel_path }
+          file_ref = existing_ref || project.main_group.new_file(swift_rel_path)
 
           sources_phase = target.source_build_phase
           already_in_sources = sources_phase.files_references.include?(file_ref)
