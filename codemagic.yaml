@@ -68,8 +68,7 @@ workflows:
         script: |
           set -e
 
-          IOS_EXPORT_DIR="build/ios"
-          XCODEPROJ=$(find "$IOS_EXPORT_DIR" -name "*.xcodeproj" | head -n 1)
+          XCODEPROJ=$(find build -name "*.xcodeproj" | head -n 1)
           if [ -z "$XCODEPROJ" ]; then
             echo "ERROR: .xcodeproj not found in $IOS_EXPORT_DIR"
             exit 1
