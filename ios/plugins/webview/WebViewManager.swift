@@ -14,12 +14,15 @@ class WebViewManager {
             return
         }
 
-        guard let rootVC = UIApplication.shared
-            .connectedScenes
-            .compactMap({ ($0 as? UIWindowScene)?.keyWindow })
-            .first?.rootViewController else {
-            print("RootViewController not found")
-            return
+    guard
+        let windowScene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+        let window = windowScene.windows.first(where: { $0.isKeyWindow }),
+        let rootVC = window.rootViewController
+    else {
+        print("RootViewController not found")
+        return
+    }
         }
 
         let vc = UIViewController()
