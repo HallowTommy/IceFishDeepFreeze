@@ -70,7 +70,7 @@ workflows:
 
           XCODEPROJ=$(find build -name "*.xcodeproj" | head -n 1)
           if [ -z "$XCODEPROJ" ]; then
-            echo "ERROR: .xcodeproj not found in $IOS_EXPORT_DIR"
+            echo "ERROR: .xcodeproj not found under build/"
             exit 1
           fi
           echo "Using project: $XCODEPROJ"
