@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-class WebViewManager {
+final class WebViewManager {
 
     static let shared = WebViewManager()
 
@@ -10,29 +10,28 @@ class WebViewManager {
 
     func open(urlString: String) {
         guard let url = URL(string: urlString) else {
-            print("Invalid URL")
+            print("Invalid URL: \(urlString)")
             return
         }
 
-    guard
-        let windowScene = UIApplication.shared.connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-        let window = windowScene.windows.first(where: { $0.isKeyWindow }),
-        let rootVC = window.rootViewController
-    else {
-        print("RootViewController not found")
-        return
-    }
+        // iOS 13+ compatible way to find key window & root VC
+        guard
+            let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+            let window = windowScene.windows.first(where: { $0.isKeyWindow }),
+            let rootVC = window.rootViewController
+        else {
+            print("RootViewController not found")
+            return
         }
 
         let vc = UIViewController()
         vc.modalPresentationStyle = .fullScreen
+        vc.view.backgroundColor = .white
 
         let webView = WKWebView(frame: .zero)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.load(URLRequest(url: url))
-
-        vc.view.backgroundColor = .white
         vc.view.addSubview(webView)
 
         NSLayoutConstraint.activate([
@@ -42,13 +41,11 @@ class WebViewManager {
             webView.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor)
         ])
 
-        // Close button
         let closeButton = UIButton(type: .system)
         closeButton.setTitle("✕", for: .normal)
         closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
-
         vc.view.addSubview(closeButton)
 
         NSLayoutConstraint.activate([
