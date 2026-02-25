@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://tivknbv31al2"]
+
+[ext_resource type="Script" uid="uid://bhw1xjfajw67o" path="res://UI/Location/locations.gd" id="1_25ikk"]
+[ext_resource type="Shader" uid="uid://ds25pnymew4xa" path="res://Panning.gdshader" id="2_j612f"]
+[ext_resource type="Texture2D" uid="uid://dfo54k7k0asxt" path="res://UI/Sprites/ShopBG.png" id="3_n4bqr"]
+[ext_resource type="FontFile" uid="uid://dd2dns2dudt33" path="res://Melon Pop.ttf" id="5_yc25e"]
+[ext_resource type="Texture2D" uid="uid://dnfi4n2ph3thg" path="res://UI/Sprites/Button.png" id="6_mov4h"]
+[ext_resource type="Texture2D" uid="uid://cm216nj3cx58o" path="res://UI/Sprites/Button_press.png" id="7_x64un"]
+[ext_resource type="Texture2D" uid="uid://ci6wr1lu6uem6" path="res://UI/Sprites/Left.png" id="8_efrbm"]
+[ext_resource type="Texture2D" uid="uid://d0m3ec74f6kky" path="res://UI/Sprites/leftPress.png" id="9_t6wc8"]
+[ext_resource type="Texture2D" uid="uid://dytuihwuuok52" path="res://UI/Sprites/Right.png" id="10_2o7cp"]
+[ext_resource type="Texture2D" uid="uid://bc7b4i4sl6qpv" path="res://UI/Sprites/RightPress.png" id="11_lfcpi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eo7k6"]
+shader = ExtResource("2_j612f")
+shader_parameter/pan_speed = Vector2(-0.2, 0.2)
+shader_parameter/tile_scale = Vector2(3, 3)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3not"]
+texture = ExtResource("6_mov4h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pe2y"]
+texture = ExtResource("7_x64un")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4q0s"]
+texture = ExtResource("8_efrbm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pagdw"]
+texture = ExtResource("9_t6wc8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfljs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eo7k6"]
+texture = ExtResource("10_2o7cp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_glx3d"]
+texture = ExtResource("11_lfcpi")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qhf5"]
+
+[node name="Locations" type="Control" unique_id=1090976756]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_25ikk")
+metadata/_edit_horizontal_guides_ = [1865.0]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=718548628]
+z_index = -2
+material = SubResource("ShaderMaterial_eo7k6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_n4bqr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1431700490]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="MarginContainer" parent="VBoxContainer" unique_id=266263226]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_top = 200
+
+[node name="LocationsContainer" type="ScrollContainer" parent="VBoxContainer/Container" unique_id=1377501499]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="Locations" type="HBoxContainer" parent="VBoxContainer/Container/LocationsContainer" unique_id=427580525]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 1330)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Container2" type="MarginContainer" parent="VBoxContainer" unique_id=1181086535]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 54
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Container2" unique_id=30962287]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Enter" type="Button" parent="VBoxContainer/Container2/VBoxContainer" unique_id=1590457213]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.13333334, 0.36078432, 0.6156863, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("5_yc25e")
+theme_override_font_sizes/font_size = 82
+theme_override_styles/normal = SubResource("StyleBoxTexture_a3not")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8pe2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_a3not")
+text = "Enter
+"
+
+[node name="Back" type="Button" parent="VBoxContainer/Container2/VBoxContainer" unique_id=2122804288]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.13333334, 0.36078432, 0.6156863, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("5_yc25e")
+theme_override_font_sizes/font_size = 82
+theme_override_styles/normal = SubResource("StyleBoxTexture_a3not")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8pe2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_a3not")
+text = "Back"
+
+[node name="LeftArrow" type="Button" parent="." unique_id=149465344]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -143.0
+offset_right = 160.0
+offset_bottom = -43.0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0, 0.5)
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_l4q0s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pagdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l4q0s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vfljs")
+
+[node name="RightArrow" type="Button" parent="." unique_id=1003520979]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -143.0
+offset_right = -60.0
+offset_bottom = -43.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0.5)
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_eo7k6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_glx3d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eo7k6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4qhf5")
+
+[connection signal="pressed" from="VBoxContainer/Container2/VBoxContainer/Enter" to="." method="_on_enter_pressed"]
+[connection signal="pressed" from="VBoxContainer/Container2/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]

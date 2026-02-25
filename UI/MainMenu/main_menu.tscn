@@ -1,0 +1,254 @@
+[gd_scene format=3 uid="uid://djslp5wwd8p41"]
+
+[ext_resource type="Script" uid="uid://cbixge4vuybcr" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
+[ext_resource type="FontFile" uid="uid://dd2dns2dudt33" path="res://Melon Pop.ttf" id="2_h8rmy"]
+[ext_resource type="Texture2D" uid="uid://cqrcat6wgec7h" path="res://Assets/DarkBG.png" id="2_trkrl"]
+[ext_resource type="Texture2D" uid="uid://b208d4ha58cep" path="res://Assets/Logo.png" id="3_bddxb"]
+[ext_resource type="Texture2D" uid="uid://dnfi4n2ph3thg" path="res://UI/Sprites/Button.png" id="3_iyy2y"]
+[ext_resource type="Texture2D" uid="uid://cm216nj3cx58o" path="res://UI/Sprites/Button_press.png" id="4_trkrl"]
+[ext_resource type="Script" uid="uid://c2krdy4m8nukl" path="res://UI/MainMenu/ui.gd" id="7_ejg71"]
+[ext_resource type="PackedScene" uid="uid://dy8ci57dh4jv5" path="res://UI/settings.tscn" id="7_iau2q"]
+[ext_resource type="PackedScene" uid="uid://dgc0aodyofct1" path="res://UI/Shop/shop.tscn" id="8_pbebc"]
+[ext_resource type="Texture2D" uid="uid://cum1r0iclq1j1" path="res://UI/Sprites/BuyPress.png" id="10_lnp6m"]
+[ext_resource type="Texture2D" uid="uid://cytc5lw6f8jv" path="res://UI/Sprites/Money.png" id="11_euymq"]
+[ext_resource type="Texture2D" uid="uid://csnuxklo8copt" path="res://Assets/snow.png" id="12_lnp6m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bddxb"]
+texture = ExtResource("3_iyy2y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iau2q"]
+texture = ExtResource("4_trkrl")
+
+[sub_resource type="Animation" id="Animation_iau2q"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("logo:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("logo:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pbebc"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("logo:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 3, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.84979284, -0.39999998, 0.0109483, 0.39999998, -0.0109483, 1, -0.33333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("logo:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 3, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.84979284, -0.29999995, 0.027985394, 0.29999995, -0.027985394, 1, -0.33333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0e1r"]
+_data = {
+&"RESET": SubResource("Animation_iau2q"),
+&"idle": SubResource("Animation_pbebc")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_euymq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(540, 1000, 1)
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+
+[node name="MainMenu" type="Control" unique_id=779799892]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jld46")
+
+[node name="BG" type="TextureRect" parent="." unique_id=804664179]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -361.81818
+offset_right = 361.8181
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_trkrl")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="logo" type="TextureRect" parent="." unique_id=1768299331]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.911348
+offset_bottom = -1027.9119
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_bddxb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=452436376]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -136.0
+offset_right = 347.0
+offset_bottom = 444.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 42
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=1429039110]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.13333334, 0.36078432, 0.6156863, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("2_h8rmy")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+text = "Play"
+
+[node name="Setting" type="Button" parent="VBoxContainer" unique_id=1568643080]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.13333334, 0.36078432, 0.6156863, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("2_h8rmy")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+text = "Settings"
+
+[node name="Shop" type="Button" parent="VBoxContainer" unique_id=1183069033]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.13333334, 0.36078432, 0.6156863, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("2_h8rmy")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+text = "Shop"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1203390170]
+libraries/ = SubResource("AnimationLibrary_u0e1r")
+autoplay = &"idle"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=214471978]
+script = ExtResource("7_ejg71")
+
+[node name="Settings" parent="UI" unique_id=771409780 instance=ExtResource("7_iau2q")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Shop" parent="UI" unique_id=1090976756 instance=ExtResource("8_pbebc")]
+unique_name_in_owner = true
+visible = false
+
+[node name="MoneyLabel" type="MarginContainer" parent="UI/Shop" unique_id=2119865447]
+z_index = 18
+layout_mode = 0
+offset_right = 316.0
+offset_bottom = 126.0
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+
+[node name="HBoxContainer" type="NinePatchRect" parent="UI/Shop/MoneyLabel" unique_id=2040840840]
+layout_mode = 2
+texture = ExtResource("10_lnp6m")
+
+[node name="TextureRect" type="TextureRect" parent="UI/Shop/MoneyLabel/HBoxContainer" unique_id=1297993539]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -71.0
+offset_right = 86.0
+offset_bottom = 71.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -0.56548667
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("11_euymq")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Shop/MoneyLabel/HBoxContainer" unique_id=185451195]
+layout_mode = 0
+offset_right = 281.0
+offset_bottom = 91.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+
+[node name="MoneyLabel" type="Label" parent="UI/Shop/MoneyLabel/HBoxContainer/MarginContainer" unique_id=589238502]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.13333334, 0.36078432, 0.6156863, 1)
+theme_override_constants/outline_size = 23
+theme_override_fonts/font = ExtResource("2_h8rmy")
+theme_override_font_sizes/font_size = 39
+text = "10000"
+vertical_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="UI" unique_id=717697691]
+position = Vector2(535, 451)
+amount = 35
+texture = ExtResource("12_lnp6m")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_euymq")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="VBoxContainer/Shop" to="." method="_on_shop_pressed"]
