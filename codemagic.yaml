@@ -97,7 +97,7 @@ workflows:
             echo "ERROR: ios/plugins/webview/WebViewManager.swift not found in repo"
             exit 1
           fi
-          cp -v "ios/plugins/webview/WebViewManager.swift" "$TARGET_SRC_DIR/WebViewManager.swift"
+          cp -v "ios/plugins/webview/WebViewManager.swift" "build/WebViewManager.swift"
 
           # 2) Правим Xcode project: добавляем WebViewManager.swift в Compile Sources + линкуем WebKit
           cat > /tmp/inject_webview.rb <<'RUBY'
